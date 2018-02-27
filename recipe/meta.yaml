@@ -15,7 +15,7 @@ build:
     - sqlformat = sqlparse.__main__:main
 
 requirements:
-  build:
+  host:
     - python
     - setuptools
   run:
