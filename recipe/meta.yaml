@@ -41,7 +41,7 @@ about:
   description: |
     sqlparse is a non-validating SQL parser for Python. It provides support
     for parsing, splitting and formatting SQL statements.
-  doc_url: https://sqlparse.readthedocs.org
+  doc_url: https://sqlparse.readthedocs.io
   dev_url: https://github.com/andialbrecht/sqlparse
 
 extra:
