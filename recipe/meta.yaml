@@ -1,17 +1,18 @@
-{% set version = "0.4.3" %}
+{% set name = "sqlparse" %}
+{% set version = "0.4.4" %}
 
 package:
-  name: sqlparse
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/s/sqlparse/sqlparse-{{ version }}.tar.gz
-  sha256: 69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d446183e84b8349fa3061f0fe7f06ca94ba65b426946ffebe6e3e8295332420c
 
 build:
   number: 0
   skip: true  # [py<35]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - sqlformat = sqlparse.__main__:main
 
@@ -19,18 +20,18 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
-    - wheel
+    - flit-core >=3.2,<4
   run:
     - python
 
 test:
+  imports:
+    - sqlparse
   requires:
     - pip
   commands:
     - pip check
-  imports:
-    - sqlparse
+    - sqlformat --help
 
 about:
   home: https://github.com/andialbrecht/sqlparse
