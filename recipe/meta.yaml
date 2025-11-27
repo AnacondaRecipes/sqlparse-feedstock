@@ -25,13 +25,18 @@ requirements:
     - python
 
 test:
+  source_files:
+    - tests
   imports:
     - sqlparse
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - sqlformat --help
+    - pytest -v tests
 
 about:
   home: https://github.com/andialbrecht/sqlparse
