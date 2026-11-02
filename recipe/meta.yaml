@@ -1,5 +1,5 @@
 {% set name = "sqlparse" %}
-{% set version = "0.6.0" %}
+{% set version = "0.6.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 113c35c75365ab9cc9c7231d68c6428fb11c085fc8e9eb1ad659b7ddbf6cd2b9
+  sha256: ca722573f848ff2d30e40ea30f53a104b7dea7635ea9285891263eb2c58fb6e7
 
 build:
   number: 0
@@ -36,7 +36,7 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - sqlformat --help
-    - pytest -v tests
+    - pytest -vv tests
 
 about:
   home: https://github.com/andialbrecht/sqlparse
